@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kilimarket Uganda - Real-time crop prices, fresh produce, grains &amp; farm products. Direct from farmers. Pay with mobile money (0786123456) and get fast delivery across Uganda.">
+    <meta name="keywords" content="Kilimarket Uganda, agri market Uganda, crop prices Uganda, fresh produce Uganda, mobile money farm, digital agriculture">
+    <title>Kilimarket Uganda | Real Prices • Fresh Produce • Farmer Direct</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
+        
+        :root {
+            --primary: #166534;     /* Deep farm green */
+            --accent: #22c55e;      /* Fresh green */
+        }
+        
+        * {
+            transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms;
+        }
+        
+        .hero-bg {
+            background: linear-gradient(rgba(22, 101, 52, 0.85), rgba(22, 101, 52, 0.85)), url('https://picsum.photos/id/1016/2000/1200');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #22c55e;
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        
+        .feature-card {
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+        
+        .price-card {
+            transition: all 0.3s ease;
+        }
+        
+        .price-card:hover {
+            transform: scale(1.03);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased bg-slate-50 text-slate-800">
+    <!-- NAVBAR -->
+    <nav class="bg-white border-b sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center gap-x-2">
+                    <div class="w-9 h-9 bg-[#166534] rounded-2xl flex items-center justify-center text-white text-3xl font-bold shadow-inner">🌾</div>
+                    <div>
+                        <span class="text-3xl font-semibold tracking-tighter text-[#166534]">Kili</span>
+                        <span class="text-3xl font-semibold tracking-tighter text-[#22c55e]">market</span>
+                        <span class="text-xs font-medium text-slate-500 ml-1 align-super">UGANDA</span>
+                    </div>
+                </div>
+
+                <!-- Menu -->
+                <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
+                    <a href="#home" class="nav-link text-slate-700 hover:text-[#166534]">Home</a>
+                    <a href="#features" class="nav-link text-slate-700 hover:text-[#166534]">Features</a>
+                    <a href="#how" class="nav-link text-slate-700 hover:text-[#166534]">How it Works</a>
+                    <a href="#prices" class="nav-link text-slate-700 hover:text-[#166534]">Market Prices</a>
+                    <a href="#shop" class="nav-link text-slate-700 hover:text-[#166534]">Shop</a>
+                    <a href="#founder" class="nav-link text-slate-700 hover:text-[#166534]">Founder</a>
+                    <a href="#contact" class="nav-link text-slate-700 hover:text-[#166534]">Contact</a>
+                </div>
+
+                <div class="flex items-center gap-x-4">
+                    <div class="hidden sm:flex items-center bg-slate-100 rounded-3xl px-4 py-2 text-sm font-medium">
+                        <i class="fa-solid fa-phone text-[#22c55e] mr-2"></i>
+                        <a href="tel:0786123456" class="hover:text-[#166534]">0786 123 456</a>
+                        <span class="mx-2 text-slate-300">|</span>
+                        <a href="tel:0752123456" class="hover:text-[#166534]">0752 123 456</a>
+                    </div>
+                    
+                    <div class="flex items-center gap-x-1 bg-emerald-100 text-emerald-700 text-xs font-semibold px-3 py-1 rounded-3xl">
+                        <i class="fa-solid fa-mobile-screen-button"></i>
+                        <span>MoMo / Airtel</span>
+                    </div>
+                    
+                    <a href="https://wa.me/256786123456" target="_blank"
+                       class="flex items-center justify-center bg-[#22c55e] text-white px-6 h-10 rounded-3xl text-sm font-semibold hover:bg-[#16a34a]">
+                        <i class="fa-brands fa-whatsapp mr-2"></i>
+                        WhatsApp
+                    </a>
+                    
+                    <button onclick="toggleMobileMenu()" class="md:hidden text-2xl text-slate-700">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t px-6 py-4">
+            <div class="flex flex-col gap-y-4 text-sm font-medium">
+                <a href="#home" class="py-2">Home</a>
+                <a href="#features" class="py-2">Features</a>
+                <a href="#how" class="py-2">How it Works</a>
+                <a href="#prices" class="py-2">Market Prices</a>
+                <a href="#shop" class="py-2">Shop</a>
+                <a href="#founder" class="py-2">Founder</a>
+                <a href="#contact" class="py-2">Contact Us</a>
+                <div class="pt-4 border-t flex flex-col gap-3">
+                    <a href="tel:0786123456" class="flex items-center text-[#166534]"><i class="fa-solid fa-phone mr-3"></i> 0786 123 456</a>
+                    <a href="tel:0752123456" class="flex items-center text-[#166534]"><i class="fa-solid fa-phone mr-3"></i> 0752 123 456</a>
+                    <a href="https://wa.me/256786123456" class="flex items-center text-[#22c55e]"><i class="fa-brands fa-whatsapp mr-3"></i> Chat on WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="hero-bg h-screen flex items-center text-white">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-8">
+                <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md text-white text-sm font-medium px-5 py-2 rounded-3xl">
+                    <span class="relative flex h-3 w-3">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+                    </span>
+                    LIVE CROP PRICES • UPDATED TODAY
+                </div>
+                
+                <h1 class="text-5xl md:text-6xl font-semibold leading-none tracking-tighter">
+                    Fresh Produce.<br>Real Prices.<br>Uganda Delivered.
+                </h1>
+                
+                <p class="text-xl max-w-lg text-white/90">
+                    Kilimarket Uganda connects farmers directly to buyers. Real-time prices for maize, beans, matooke &amp; more. 
+                    Pay instantly with mobile money to <strong>0786 123 456</strong>.
+                </p>
+                
+                <div class="flex flex-wrap gap-4">
+                    <a href="#shop" class="inline-flex items-center justify-center bg-white text-[#166534] font-semibold text-lg px-8 h-14 rounded-3xl hover:shadow-xl">
+                        Shop Now <i class="fa-solid fa-arrow-right ml-3"></i>
+                    </a>
+                    
+                    <a href="https://wa.me/256786123456?text=Hi%20Kilimarket%2C%20I%20want%20fresh%20produce" target="_blank"
+                       class="inline-flex items-center justify-center border-2 border-white text-white font-semibold text-lg px-8 h-14 rounded-3xl hover:bg-white/10">
+                        <i class="fa-brands fa-whatsapp mr-2 text-2xl"></i> Chat on WhatsApp
+                    </a>
+                    
+                    <div class="flex items-center text-sm">
+                        <div class="flex -space-x-4">
+                            <div class="w-8 h-8 bg-white/30 backdrop-blur rounded-2xl flex items-center justify-center text-xs">🌽</div>
+                            <div class="w-8 h-8 bg-white/30 backdrop-blur rounded-2xl flex items-center justify-center text-xs">🥬</div>
+                        </div>
+                        <p class="ml-4">Trusted by <strong>4,672+</strong> Ugandan farmers &amp; buyers</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-center gap-x-8 text-sm">
+                    <div class="flex items-center">
+                        <i class="fa-solid fa-truck-fast text-3xl text-emerald-400 mr-3"></i>
+                        <div>24-48hr<br><span class="font-semibold">Delivery</span></div>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fa-solid fa-shield-halved text-3xl text-emerald-400 mr-3"></i>
+                        <div>Quality<br><span class="font-semibold">Assurance</span></div>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fa-solid fa-mobile-screen-button text-3xl text-emerald-400 mr-3"></i>
+                        <div>Pay to<br><span class="font-semibold">0786123456</span></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hidden md:block relative">
+                <div class="bg-white/10 backdrop-blur-3xl rounded-3xl p-8 shadow-2xl">
+                    <img src="https://picsum.photos/id/1016/800/600" alt="Fresh produce from Ugandan farms - Kilimarket" class="rounded-3xl shadow-2xl mx-auto">
+                    <div class="absolute -bottom-6 -right-6 bg-white rounded-3xl px-6 py-4 shadow-xl flex items-center gap-4">
+                        <div class="text-emerald-500 text-4xl">🌾</div>
+                        <div>
+                            <p class="text-xs uppercase tracking-widest">Live Price</p>
+                            <p class="text-3xl font-semibold text-slate-800">Maize — UGX 1,200/kg</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7 CORE FEATURES -->
+    <section id="features" class="max-w-7xl mx-auto px-6 py-20">
+        <div class="text-center mb-16">
+            <span class="px-4 py-2 bg-emerald-100 text-emerald-700 text-sm font-semibold rounded-3xl">MILESTONE 4 – SOLUTION FEATURES</span>
+            <h2 class="text-4xl font-semibold mt-4">7 Core Features that Power Kilimarket</h2>
+            <p class="text-slate-600 mt-3 max-w-md mx-auto">Everything smallholder farmers and buyers need for fair, transparent agriculture in Uganda</p>
+        </div>
+        
+        <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div class="feature-card bg-white p-8 rounded-3xl border border-slate-100">
+                <div class="text-4xl mb-6">📊</div>
+                <h3 class="font-semibold text-xl mb-2">Real-Time Crop Prices</h3>
+                <p class="text-slate-600">Daily updated prices from major markets. No middlemen markups.</p>
+            </div>
+            <div class="feature-card bg-white p-8 rounded-3xl border border-slate-100">
+                <div class="text-4xl mb-6">💳</div>
+                <h3 class="font-semibold text-xl mb-2">Mobile Money Payments</h3>
+                <p class="text-slate-600">Pay instantly to <strong>0786 123 456</strong>. Instant farmer confirmation.</p>
+            </div>
+            <div class="feature-card bg-white p-8 rounded-3xl border border-slate-100">
+                <div class="text-4xl mb-6">🚚</div>
+                <h3 class="font-semibold text-xl mb-2">Nationwide Fresh Delivery</h3>
+                <p class="text-slate-600">24-48 hours in Kampala, 2-3 days upcountry. Track your order live.</p>
+            </div>
+            <div class="feature-card bg-white p-8 rounded-3xl border border-slate-100">
+                <div class="text-4xl mb-6">🛡️</div>
+                <h3 class="font-semibold text-xl mb-2">Quality Assurance</h3>
+                <p class="text-slate-600">Traceability from farm to table + grading standards.</p>
+            </div>
+            <div class="feature-card bg-white p-8 rounded-3xl border border-slate-100">
+                <div class="text-4xl mb-6">📞</div>
+                <h3 class="font-semibold text-xl mb-2">Farmer Support Hotline</h3>
+                <p class="text-slate-600">24/7 expert advice on prices, best practices &amp; market access.</p>
+            </div>
+            <div class="feature-card bg-white p-8 rounded-3xl border border-slate-100">
+                <div class="text-4xl mb-6">✅</div>
+                <h3 class="font-semibold text-xl mb-2">Verified Farmers</h3>
+                <p class="text-slate-600">Only genuine smallholder farmers. Direct connection, fair prices.</p>
+            </div>
+            <div class="feature-card bg-white p-8 rounded-3xl border border-slate-100 col-span-1 md:col-span-3 lg:col-span-1">
+                <div class="text-4xl mb-6">📚</div>
+                <h3 class="font-semibold text-xl mb-2">Digital Farming Resources</h3>
+                <p class="text-slate-600">Free guides, weather tips &amp; market intelligence for farmers.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how" class="bg-slate-900 text-white py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-12 gap-12 items-center">
+                <div class="md:col-span-5">
+                    <h2 class="text-4xl font-semibold mb-6">How Kilimarket Works – Simple as 1-2-3</h2>
+                    <p class="text-slate-400 text-lg">From farm to table in minutes. Built for Uganda’s smallholder farmers and buyers.</p>
+                    <div class="mt-10 space-y-8">
+                        <div class="flex gap-6">
+                            <div class="w-10 h-10 bg-emerald-500 text-white rounded-2xl flex items-center justify-center font-bold flex-shrink-0">1</div>
+                            <div>
+                                <h4 class="font-semibold text-xl">Check Live Prices &amp; Browse</h4>
+                                <p class="text-slate-400">See today’s prices for maize, beans, matooke and more.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-6">
+                            <div class="w-10 h-10 bg-emerald-500 text-white rounded-2xl flex items-center justify-center font-bold flex-shrink-0">2</div>
+                            <div>
+                                <h4 class="font-semibold text-xl">Order &amp; Pay with Mobile Money</h4>
+                                <p class="text-slate-400">Send payment to <strong>0786 123 456</strong>. Farmer confirms instantly.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-6">
+                            <div class="w-10 h-10 bg-emerald-500 text-white rounded-2xl flex items-center justify-center font-bold flex-shrink-0">3</div>
+                            <div>
+                                <h4 class="font-semibold text-xl">Get Fresh Produce Delivered</h4>
+                                <p class="text-slate-400">Direct from farm + quality guarantee.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:col-span-7">
+                    <img src="https://picsum.photos/id/1016/900/520" alt="How Kilimarket Uganda works" class="rounded-3xl shadow-2xl mx-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIVE MARKET PRICES -->
+    <section id="prices" class="max-w-7xl mx-auto px-6 py-20">
+        <div class="flex justify-between items-end mb-12">
+            <div>
+                <span class="px-4 py-2 bg-amber-100 text-amber-700 text-sm font-semibold rounded-3xl">LIVE MARKET</span>
+                <h2 class="text-4xl font-semibold mt-3">Current Crop Prices in Uganda</h2>
+            </div>
+            <a href="#" class="text-[#22c55e] font-medium flex items-center">View full catalogue <i class="fa-solid fa-arrow-right ml-2"></i></a>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="price-card bg-white rounded-3xl overflow-hidden border">
+                <img src="https://picsum.photos/id/1016/600/300" alt="Maize" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h4 class="font-semibold">Maize (Dry)</h4>
+                    <p class="text-xs text-slate-500">Per kg • Kampala market</p>
+                    <div class="flex justify-between items-end mt-6">
+                        <div>
+                            <span class="text-xs text-slate-400">Today’s Price</span>
+                            <p class="text-3xl font-semibold text-emerald-600">UGX 1,200/kg</p>
+                        </div>
+                        <button onclick="addToCart(this)" class="bg-emerald-600 text-white px-6 py-3 rounded-3xl text-sm font-medium">Order Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="price-card bg-white rounded-3xl overflow-hidden border">
+                <img src="https://picsum.photos/id/201/600/300" alt="Beans" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h4 class="font-semibold">Red Beans</h4>
+                    <p class="text-xs text-slate-500">Per kg • Fresh harvest</p>
+                    <div class="flex justify-between items-end mt-6">
+                        <div>
+                            <span class="text-xs text-slate-400">Today’s Price</span>
+                            <p class="text-3xl font-semibold text-emerald-600">UGX 2,800/kg</p>
+                        </div>
+                        <button onclick="addToCart(this)" class="bg-emerald-600 text-white px-6 py-3 rounded-3xl text-sm font-medium">Order Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="price-card bg-white rounded-3xl overflow-hidden border">
+                <img src="https://picsum.photos/id/866/600/300" alt="Matooke" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h4 class="font-semibold">Matooke Bunch</h4>
+                    <p class="text-xs text-slate-500">Large bunch • Fresh</p>
+                    <div class="flex justify-between items-end mt-6">
+                        <div>
+                            <span class="text-xs text-slate-400">Today’s Price</span>
+                            <p class="text-3xl font-semibold text-emerald-600">UGX 18,000</p>
+                        </div>
+                        <button onclick="addToCart(this)" class="bg-emerald-600 text-white px-6 py-3 rounded-3xl text-sm font-medium">Order Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="price-card bg-white rounded-3xl overflow-hidden border">
+                <img src="https://picsum.photos/id/1005/600/300" alt="Cassava" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h4 class="font-semibold">Cassava (Fresh)</h4>
+                    <p class="text-xs text-slate-500">Per kg • High quality</p>
+                    <div class="flex justify-between items-end mt-6">
+                        <div>
+                            <span class="text-xs text-slate-400">Today’s Price</span>
+                            <p class="text-3xl font-semibold text-emerald-600">UGX 900/kg</p>
+                        </div>
+                        <button onclick="addToCart(this)" class="bg-emerald-600 text-white px-6 py-3 rounded-3xl text-sm font-medium">Order Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <p class="text-center text-xs text-slate-500 mt-8">*Prices sourced from major Ugandan markets &amp; verified farmers. Last updated: April 07, 2026</p>
+    </section>
+
+    <!-- CALL TO ACTION / SHOP PREVIEW -->
+    <section id="shop" class="bg-gradient-to-r from-[#166534] to-[#22c55e] py-20 text-white">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-semibold">Ready to Buy or Sell Fresh Produce?</h2>
+            <p class="mt-3 max-w-xl mx-auto">Browse 100+ farm products. Farmers can list produce instantly. Transparent prices, zero middlemen.</p>
+            
+            <div class="mt-10 flex flex-wrap justify-center gap-4">
+                <a href="#" class="px-10 py-5 bg-white text-[#166534] rounded-3xl font-semibold flex items-center">Grains <i class="fa-solid fa-wheat-awn ml-3"></i></a>
+                <a href="#" class="px-10 py-5 bg-white text-[#166534] rounded-3xl font-semibold flex items-center">Vegetables <i class="fa-solid fa-carrot ml-3"></i></a>
+                <a href="#" class="px-10 py-5 bg-white text-[#166534] rounded-3xl font-semibold flex items-center">Fruits <i class="fa-solid fa-apple-whole ml-3"></i></a>
+                <a href="#" class="px-10 py-5 bg-white text-[#166534] rounded-3xl font-semibold flex items-center">Matooke &amp; Roots <i class="fa-solid fa-leaf ml-3"></i></a>
+            </div>
+            
+            <div class="mt-16 text-sm opacity-75">
+                Mobile money payment number: <strong class="font-mono text-lg">0786123456</strong><br>
+                Alternative line: 0752123456
+            </div>
+        </div>
+    </section>
+
+    <!-- MEET THE FOUNDER -->
+    <section id="founder" class="max-w-7xl mx-auto px-6 py-20 bg-white border-t">
+        <div class="grid md:grid-cols-12 gap-12 items-center">
+            <div class="md:col-span-5 flex justify-center">
+                <div class="relative">
+                    <img src="image.png" alt="MUHEREZA MAXIOUS - Founder of Kilimarket Uganda" class="w-full max-w-[420px] rounded-3xl shadow-2xl border-8 border-white object-cover">
+                    <div class="absolute -bottom-4 -right-4 bg-[#22c55e] text-white text-sm font-semibold px-6 py-2 rounded-3xl shadow-xl flex items-center gap-2">
+                        <i class="fa-solid fa-user-tie"></i>
+                        FOUNDER
+                    </div>
+                </div>
+            </div>
+            
+            <div class="md:col-span-7 space-y-6">
+                <span class="px-4 py-2 bg-[#166534] text-white text-sm font-semibold rounded-3xl inline-flex items-center">
+                    <i class="fa-solid fa-user-graduate mr-2"></i>
+                    TEAM / INDIVIDUAL CONTRIBUTION
+                </span>
+                
+                <h2 class="text-5xl font-semibold tracking-tighter text-[#166534]">Meet the Founder</h2>
+                <h3 class="text-3xl font-semibold text-[#22c55e]">MUHEREZA MAXIOUS</h3>
+                
+                <p class="text-lg text-slate-600 max-w-lg">
+                    Year 2 BSIT Student • Uganda Christian University<br>
+                    Passionate AgriTech Entrepreneur solving market access for smallholder farmers.
+                </p>
+                
+                <div class="prose text-slate-600">
+                    <p>
+                        I created <strong>Kilimarket Uganda</strong> after validating real pain points of farmers through customer interviews. 
+                        Using the Lean Canvas, digital branding, and a full marketing strategy, this live website demonstrates a validated AgriTech solution 
+                        that gives farmers fair prices and buyers fresh produce at real market rates.
+                    </p>
+                    <p>
+                        Every feature you see was built as part of ENT3251 Digital Marketing and ICT Entrepreneurship — proving individual contribution while solving a locally relevant agricultural problem.
+                    </p>
+                </div>
+                
+                <div class="flex flex-wrap gap-4">
+                    <a href="https://wa.me/256786123456?text=Hi%20MUHEREZA%20MAXIOUS%2C%20I%20saw%20your%20Kilimarket%20project" target="_blank"
+                       class="inline-flex items-center justify-center bg-[#22c55e] text-white font-semibold px-8 h-12 rounded-3xl hover:bg-[#16a34a]">
+                        <i class="fa-brands fa-whatsapp mr-2"></i> Chat with the Founder
+                    </a>
+                    <a href="#contact" class="inline-flex items-center justify-center border border-slate-300 font-semibold px-8 h-12 rounded-3xl hover:bg-slate-50">
+                        Learn more about the journey
+                    </a>
+                </div>
+
+                <!-- QR CODE FOR VIDEO WALKTHROUGH -->
+                <div class="mt-10 pt-8 border-t flex flex-col md:flex-row items-start gap-8">
+                    <div class="text-center md:text-left">
+                        <p class="uppercase text-emerald-600 text-xs font-bold tracking-widest mb-3">MILESTONE 5 • VIDEO WALKTHROUGH</p>
+                        <h4 class="text-2xl font-semibold text-slate-800 mb-2">Scan to Watch 3-Minute Demo</h4>
+                        <p class="text-slate-500 text-sm max-w-xs">Live website tour • Key features • User flow • Value proposition in action</p>
+                    </div>
+                    
+                    <div class="flex-shrink-0">
+                        <a href="https://youtu.be/YOUR_VIDEO_ID_HERE" target="_blank" class="block">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=280x280&amp;data=https://youtu.be/YOUR_VIDEO_ID_HERE&amp;color=166534" 
+                                 alt="QR Code - Video Walkthrough"
+                                 class="shadow-2xl rounded-3xl hover:scale-105 transition-transform">
+                        </a>
+                        <p class="text-[10px] text-center text-slate-400 mt-2">Click or scan → opens 3-5 min video</p>
+                    </div>
+                </div>
+                
+                <div class="text-xs text-slate-400 flex items-center gap-6">
+                    <div>📍 Kampala, Uganda</div>
+                    <div>🎓 BSIT • Uganda Christian University</div>
+                    <div>🚀 ENT3251 Project 2026</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contact" class="bg-slate-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-12 gap-12">
+            <div class="md:col-span-5">
+                <div class="flex items-center gap-x-2 mb-6">
+                    <div class="w-9 h-9 bg-white rounded-2xl flex items-center justify-center text-[#166534] text-3xl">🌾</div>
+                    <span class="text-4xl font-semibold tracking-tighter">Kilimarket Uganda</span>
+                </div>
+                <p class="text-slate-400 max-w-xs">Empowering smallholder farmers with fair prices and direct market access.</p>
+                
+                <div class="mt-12">
+                    <p class="text-xs uppercase mb-2">Call or WhatsApp us</p>
+                    <div class="flex flex-wrap gap-x-8 gap-y-4 text-2xl font-medium">
+                        <a href="tel:0786123456" class="flex items-center"><i class="fa-solid fa-phone mr-3"></i> 0786 123 456</a>
+                        <a href="tel:0752123456" class="flex items-center"><i class="fa-solid fa-phone mr-3"></i> 0752 123 456</a>
+                    </div>
+                </div>
+                
+                <div class="mt-8 text-xs text-slate-400">
+                    © 2026 Kilimarket Uganda • All Rights Reserved<br>
+                    This website was built as part of ENT3251 Digital Marketing &amp; ICT Entrepreneurship Project
+                </div>
+            </div>
+            
+            <div class="md:col-span-2">
+                <h5 class="font-semibold mb-6">Quick Links</h5>
+                <ul class="space-y-3 text-slate-400 text-sm">
+                    <li><a href="#features">Core Features</a></li>
+                    <li><a href="#how">How it Works</a></li>
+                    <li><a href="#prices">Market Prices</a></li>
+                    <li><a href="#founder">Meet the Founder</a></li>
+                    <li><a href="#">Farmer Resources</a></li>
+                </ul>
+            </div>
+            
+            <div class="md:col-span-2">
+                <h5 class="font-semibold mb-6">Company</h5>
+                <ul class="space-y-3 text-slate-400 text-sm">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">For Farmers</a></li>
+                    <li><a href="#">Quality Policy</a></li>
+                    <li><a href="#">Delivery Areas</a></li>
+                </ul>
+            </div>
+            
+            <div class="md:col-span-3">
+                <h5 class="font-semibold mb-6">Pay with Mobile Money</h5>
+                <div class="bg-white/10 rounded-3xl p-6 text-center">
+                    <p class="text-emerald-400 font-medium text-sm mb-2">SEND PAYMENT TO</p>
+                    <p class="text-4xl font-mono font-bold">0786123456</p>
+                    <p class="text-xs mt-4">MTN MoMo • Airtel Money • Instant confirmation</p>
+                    <div class="flex justify-center gap-6 mt-8">
+                        <i class="fa-brands fa-mtn text-5xl"></i>
+                        <i class="fa-brands fa-airtel text-5xl"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function initializeTailwind() {
+            tailwind.config = { content: [], theme: { extend: {} } };
+        }
+        
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+        
+        function addToCart(btn) {
+            const originalText = btn.innerHTML;
+            btn.style.backgroundColor = '#16a34a';
+            btn.innerHTML = `<i class="fa-solid fa-check mr-2"></i> Ordered!`;
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.style.backgroundColor = '';
+                alert("✅ Order placed! Pay via mobile money to 0786123456");
+            }, 1500);
+        }
+        
+        window.onload = function() {
+            initializeTailwind();
+            console.log('%c✅ Kilimarket Uganda (Agriculture Sector) website loaded successfully with Founder MUHEREZA MAXIOUS! Ready for ENT3251 Pitch Day.', 'color:#22c55e; font-family:monospace; font-size:13px');
+        };
+    </script>
+</body>
+</html>
